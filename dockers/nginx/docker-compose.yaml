@@ -1,0 +1,8 @@
+version: '3'
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "9990:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf  # 将本地的 nginx.conf 文件挂载到容器内的配置文件

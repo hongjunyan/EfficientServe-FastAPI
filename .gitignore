@@ -1,0 +1,24 @@
+# Files
+*.ipynb_checkpoints
+*.ipynb
+temp_will_remove*
+try*
+cache*
+condaenv*
+fake*
+*.pkl
+*.zip
+*.csv
+nohup.out
+
+# Folders
+*__pycache__/
+*.idea/
+model_save/
+mlruns/
+runs/
+tensorboard/
+dataset/
+_*/
+log/
+temp/

@@ -1,0 +1,19 @@
+services:
+  test:
+    image: demo_ner
+    mem_limit: 8G
+    # cpus: 2
+    # more workers, more requests can handle
+    command: gunicorn backend_version1:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:9999 --timeout=300
+    ports:
+      - "9999:9999"  # host_port:container_port
+    volumes:
+      - ./docker/backend_version1.py:/app/backend_version1.py
+      - ./docker/logs:/app/logs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              device_ids: ['0']
+              capabilities: [gpu]

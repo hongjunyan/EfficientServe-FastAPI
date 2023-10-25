@@ -1,0 +1,41 @@
+x-app-common: &app-common
+  image: demo_ner  # cd docker && docker build -t demo_app .
+  deploy:
+    resources:
+      reservations:
+        devices:
+          - driver: nvidia
+            device_ids: [ '0' ]
+            capabilities: [ gpu ]
+
+services:
+  app1:
+    <<: *app-common
+    mem_limit: 8G
+    # cpus: 2
+    command: python backend.py
+    ports:
+      - "9999:9999"  # host_port:container_port
+    volumes:
+      - ./docker/backend_version1.py:/app/backend_version1.py
+      - ./docker/logs:/app/logs
+
+  app2:
+    <<: *app-common
+    mem_limit: 8G
+    # cpus: 2
+    command: python backend.py
+    ports:
+      - "9998:9999"  # host_port:container_port
+    volumes:
+      - ./docker/backend_version1.py:/app/backend_version1.py
+
+  app3:
+    <<: *app-common
+    mem_limit: 8G
+    # cpus: 2
+    command: python backend.py
+    ports:
+      - "9997:9999"  # host_port:container_port
+    volumes:
+      - ./docker/backend_version1.py:/app/backend_version1.py
