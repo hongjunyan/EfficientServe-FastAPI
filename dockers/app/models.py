@@ -35,18 +35,29 @@ class NERModel(object):
     def __init__(self, checkpoint: str, use_gpu=False):
         self.checkpoint = checkpoint
         self.use_gpu = use_gpu
-        self.pipeline = self.build_model("./onnx")
+        self.pipeline = self.build_model()  # pull model from HF hub
+        # self.pipeline = self.build_model("./onnx")  # use local model
 
-    def build_model(self, save_dir: str):
-        save_dir = Path(save_dir)
-        if not save_dir.exists():
-            convert_hf_to_onnx(self.checkpoint, str(save_dir), pipeline_tag="token-classification")
-
-        if self.use_gpu:
-            model = ORTModelForTokenClassification.from_pretrained(str(save_dir), provider="CUDAExecutionProvider")
+    def build_model(self, save_dir=None):
+        if save_dir is None:
+            if self.use_gpu:
+                model = ORTModelForTokenClassification.from_pretrained(self.checkpoint,
+                                                                       provider="CUDAExecutionProvider")
+            else:
+                model = ORTModelForTokenClassification.from_pretrained(self.checkpoint,
+                                                                       provider="CPUExecutionProvider")
+            tokenizer = AutoTokenizer.from_pretrained(self.checkpoint)
         else:
-            model = ORTModelForTokenClassification.from_pretrained(str(save_dir), provider="CPUExecutionProvider")
-        tokenizer = AutoTokenizer.from_pretrained(str(save_dir))
+            save_dir = Path(save_dir)
+            if not save_dir.exists():
+                convert_hf_to_onnx(self.checkpoint, str(save_dir), pipeline_tag="token-classification")
+
+            if self.use_gpu:
+                model = ORTModelForTokenClassification.from_pretrained(str(save_dir), provider="CUDAExecutionProvider")
+            else:
+                model = ORTModelForTokenClassification.from_pretrained(str(save_dir), provider="CPUExecutionProvider")
+            tokenizer = AutoTokenizer.from_pretrained(str(save_dir))
+
         return pipeline("token-classification", model=model, tokenizer=tokenizer, aggregation_strategy="simple")
 
     def __call__(self, inp_sentence: str):
