@@ -6,7 +6,7 @@ services:
     # more workers, more requests can handle
     command: gunicorn backend_version1:app --workers 2 --worker-class uvicorn.workers.UvicornWorker --bind 0.0.0.0:9999 --timeout=300
     ports:
-      - "9999:9999"  # host_port:container_port
+      - "9901:9999"  # host_port:container_port
     volumes:
       - ./docker/backend.py:/app/backend.py
       - ./docker/logs:/app/logs
