@@ -10,7 +10,7 @@ def say_hello_to(url: str):
     resp = requests.get(url, timeout=30)
     if resp.status_code == 200:
         is_success = True
-    response_time  = time.time() - _time
+    response_time = time.time() - _time
     return response_time, is_success
 
 
@@ -21,9 +21,9 @@ def test_performance(url: str, num_requests: int, num_threads: int):
     return results
 
 
-num_requests = 100
-url = "http://127.0.0.1:9990/ner"
-num_threads = 100
+num_requests = 1000
+url = "http://127.0.0.1/ner"
+num_threads = 50
 results = test_performance(url, num_requests, num_threads)
 
 

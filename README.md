@@ -40,7 +40,16 @@ $> sudo systemctl restart docker
     ```commandline
     $> docker-compose up -d
     ```
+
+- dozzle
   
+  monitor app
+  ```commandline
+  $> cd dockers/dozzle
+  $> docker compose up -d
+  ```
+
+
 ## Test the performance
 You can try changing `num_threads` in `stress_test.py` or adding/removing the upstream server
 ```
