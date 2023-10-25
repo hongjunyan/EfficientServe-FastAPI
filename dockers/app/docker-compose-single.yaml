@@ -1,6 +1,6 @@
 services:
   test:
-    image: demo_ner
+    image: demo_app
     mem_limit: 8G
     # cpus: 2
     # more workers, more requests can handle
@@ -8,7 +8,7 @@ services:
     ports:
       - "9999:9999"  # host_port:container_port
     volumes:
-      - ./docker/backend_version1.py:/app/backend_version1.py
+      - ./docker/backend.py:/app/backend.py
       - ./docker/logs:/app/logs
     deploy:
       resources:

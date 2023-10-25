@@ -1,6 +1,6 @@
 ## Step1: Build Image
 ```bash
-$> docker build -t demo_ner .
+$> docker build -t demo_app .
 ```
 
 ## Step2: Run Service
