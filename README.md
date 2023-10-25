@@ -1,6 +1,6 @@
 # EfficientServe-FastAPI
 
-![docker_fastapi_nginx.png](imgs/docker_fastapi_nginx.png)
+<img src="imgs/docker_fastapi_nginx.png" alt="docker_fastapi_nginx" width="600px"/>
 
 ## Install nvidia-docker
 ```commandline
