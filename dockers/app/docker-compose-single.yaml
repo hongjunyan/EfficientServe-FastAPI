@@ -8,8 +8,7 @@ services:
     ports:
       - "9901:9999"  # host_port:container_port
     volumes:
-      - ./docker/backend.py:/app/backend.py
-      - ./docker/logs:/app/logs
+      - backend.py:/app/backend.py
     deploy:
       resources:
         reservations:

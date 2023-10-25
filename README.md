@@ -1,5 +1,12 @@
 # EfficientServe-FastAPI
 
+## Install nvidia-docker
+```commandline
+$> sudo apt-get update
+$> sudo apt-get install -y nvidia-docker2
+$> sudo systemctl restart docker
+```
+
 ## Build Image
 - app
     ```commandline
