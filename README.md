@@ -1,6 +1,6 @@
 # EfficientServe-FastAPI
 
-![](C:/Users/hongjunyan/Pictures/docker_fastapi_nginx.png)
+![docker_fastapi_nginx.png](imgs/docker_fastapi_nginx.png)
 
 ## Install nvidia-docker
 ```commandline
@@ -20,7 +20,7 @@ $> sudo systemctl restart docker
 - App
     ```commandline
     $> cd dockers/app
-    $> docker-compose -f docker-compose-multi.yaml up -d
+    $> docker compose up -d
     ```
 
 - Nginx

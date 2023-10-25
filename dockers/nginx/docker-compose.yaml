@@ -1,6 +1,6 @@
 version: '3'
 services:
-  nginx:
+  demo-app:
     image: nginx:latest
     ports:
       - "9990:80"
