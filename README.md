@@ -1,5 +1,7 @@
 # EfficientServe-FastAPI
 
+![](C:/Users/hongjunyan/Pictures/docker_fastapi_nginx.png)
+
 ## Install nvidia-docker
 ```commandline
 $> sudo apt-get update
