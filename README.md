@@ -17,13 +17,13 @@ $> sudo systemctl restart docker
     ```
 
 ## Run Service
-- App
+- App: Chinese NER application (https://huggingface.co/JasonYan/bert-base-chinese-stock-ner)
     ```commandline
     $> cd dockers/app
     $> docker compose up -d
     ```
 
-- Nginx
+- Nginx: Load Balancer
     
     ```commandline
     $> cd dockers/nginx
@@ -41,9 +41,8 @@ $> sudo systemctl restart docker
     $> docker-compose up -d
     ```
 
-- dozzle
-  
-  monitor app
+- Dozzle: Monitor Container
+
   ```commandline
   $> cd dockers/dozzle
   $> docker compose up -d

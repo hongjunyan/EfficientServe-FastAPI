@@ -9,7 +9,7 @@ from utils import create_logger
 # os.environ["HF_DATASETS_CACHE"] = "D:/Projects/token_classification/try_api/hf_cache"
 app = FastAPI()
 logger = create_logger("demo", "./logs")
-model = NERModel("JasonYan/bert-base-chinese-stock", use_gpu=True)
+model = NERModel("JasonYan/bert-base-chinese-stock-ner", use_gpu=True)
 
 
 def model_predict():
