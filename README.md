@@ -41,6 +41,11 @@ $> sudo systemctl restart docker
     $> docker-compose up -d
     ```
 
+    step3: set replicas and update serivce
+    ```bash
+    $> docker compose up -d --remove-orphans
+    ```
+
 - Dozzle: Monitor Container
 
   ```commandline
