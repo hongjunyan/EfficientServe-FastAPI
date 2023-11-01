@@ -59,3 +59,7 @@ You can try changing `num_threads` in `stress_test.py` or adding/removing the up
 ```
 $> python stress_test.py
 ```
+
+
+## Additional settings
+apply ThreadPoolExecutor(worker=1) for async model_predict will get more stable and faster responses
